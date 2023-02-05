@@ -1,0 +1,44 @@
+2022-10-24 09:46:59线程：2 → 8801957801242 → @Lj868 → client.send_message: The user has been deleted/deactivated (caused by ResolveUsernameRequest)
+2022-10-24 09:47:00线程：1 → 8801968756930 → @LongTeng0_1 → client.send_message: The user has been deleted/deactivated (caused by ResolveUsernameRequest)
+2022-10-24 09:47:00线程：3 → 8801951325321 → @Liuyu668 → client.send_message: The user has been deleted/deactivated (caused by ResolveUsernameRequest)
+2022-10-24 09:47:32线程：1 → 8801946815912 → @LionKG888 → client.send_message: Too many requests (caused by SendMessageRequest)
+2022-10-24 09:47:34线程：2 → 8801944979003 → @LionKG888 → client.send_message: The user has been deleted/deactivated (caused by ResolveUsernameRequest)
+2022-10-24 09:53:40线程：2 → 8801957801242 → @Laoliu1987 → client.send_message: The user has been deleted/deactivated (caused by ResolveUsernameRequest)
+2022-10-24 09:53:41线程：1 → 8801968756930 → @Laoliu1998 → client.send_message: The user has been deleted/deactivated (caused by ResolveUsernameRequest)
+2022-10-24 09:53:42线程：3 → 8801951325321 → @Laoliu1268 → client.send_message: The user has been deleted/deactivated (caused by ResolveUsernameRequest)
+2022-10-24 09:54:15线程：3 → 8801944979003 → @Laogui990 → client.send_message: The user has been deleted/deactivated (caused by ResolveUsernameRequest)
+2022-10-24 10:10:23线程：3 → 8801968756930 → @LG99aa → client.send_message: The user has been deleted/deactivated (caused by ResolveUsernameRequest)
+2022-10-24 10:10:25线程：2 → 8801957801242 → @Jiansheng222 → client.send_message: The user has been deleted/deactivated (caused by ResolveUsernameRequest)
+2022-10-24 10:10:25线程：1 → 8801951325321 → @Jcg5918 → client.send_message: The user has been deleted/deactivated (caused by ResolveUsernameRequest)
+2022-10-24 10:13:33线程：1 → 8801944979003 → @Huayang666 → client.send_message: The user has been deleted/deactivated (caused by ResolveUsernameRequest)
+2022-10-24 10:15:24线程：1 → 8801968756930 → @Huayang555 → client.send_message: The user has been deleted/deactivated (caused by ResolveUsernameRequest)
+2022-10-24 10:15:25线程：3 → 8801951325321 → @Huayang002 → client.send_message: The user has been deleted/deactivated (caused by ResolveUsernameRequest)
+2022-10-24 10:15:25线程：2 → 8801957801242 → @Huayang006 → client.send_message: The user has been deleted/deactivated (caused by ResolveUsernameRequest)
+2022-10-24 10:16:37线程：1 → 8801944979003 → @Hengwan777 → client.send_message: The user has been deleted/deactivated (caused by ResolveUsernameRequest)
+2022-10-24 10:16:38线程：3 → 8801946815912 → @Howwli → client.send_message: Too many requests (caused by SendMessageRequest)
+2022-10-24 10:21:52线程：1 → 8801946815912 → @Howwli → client.send_message: Too many requests (caused by SendMessageRequest)
+2022-10-24 10:24:43线程：1 → 8801946815912 → @Howwli → client.send_message: Too many requests (caused by SendMessageRequest)
+2022-10-24 10:27:28线程：1 → 8801946815912 → @Howwli → client.send_message: Too many requests (caused by SendMessageRequest)
+2022-10-24 10:32:55线程：3 → 919672652063 → @DGismylove → client.send_message: No user has "dgismylove" as username
+2022-10-24 10:52:25线程：3 → 919672652063 → @tyl917 → client.send_message: No user has "tyl917" as username
+2022-10-24 11:00:47线程：3 → 919672652063 → @guic888 → client.send_message: Nobody is using this username, or the username is unacceptable. If the latter, it must match r"[a-zA-Z][\w\d]{3,30}[a-zA-Z\d]" (caused by ResolveUsernameRequest)
+2022-10-24 14:59:30线程：2 → 919672860135 → @zzzc007 → client.send_message: Too many requests (caused by SendMessageRequest)
+2022-10-24 14:59:31线程：1 → 919672652063 → @zyz0086 → client.send_message: Too many requests (caused by SendMessageRequest)
+2022-10-24 14:59:31线程：3 → 919674773817 → @zhaom66 → client.send_message: Too many requests (caused by SendMessageRequest)
+2022-10-24 21:39:55线程：1 → 919675485962.json → @zzzc007 → client.send_message: The key is not registered in the system (caused by ResolveUsernameRequest)
+2022-10-24 21:53:55线程：1 → 919678391356 → @zongtong01 → client.send_message: No user has "zongtong01" as username
+2022-10-24 22:08:35线程：1 → 919678391356 → @zcjb7788 → client.send_message: No user has "zcjb7788" as username
+2022-10-24 22:15:31线程：1 → 919678391356 → @yydj3577 → client.send_message: No user has "yydj3577" as username
+2022-10-24 22:21:20线程：1 → 919678391356 → @yuan5888 → client.send_message: No user has "yuan5888" as username
+2022-10-24 22:22:34线程：1 → 919678391356 → @ys7899 → client.send_message: Too many requests (caused by SendMessageRequest)
+2022-10-24 22:29:34线程：1 → 919686241367 → @yj00009 → client.send_message: The user has been deleted/deactivated (caused by ResolveUsernameRequest)
+2022-10-24 22:30:25线程：1 → 919685834083 → @yizhiyu88m → client.send_message: No user has "yizhiyu88m" as username
+2022-10-24 22:58:12线程：1 → 919685834083 → @xixi59188 → client.send_message: No user has "xixi59188" as username
+2022-10-24 23:14:50线程：1 → 919685834083 → @xiaoxiao5848 → client.send_message: Too many requests (caused by SendMessageRequest)
+2022-10-24 23:22:29线程：1 → 919682570967 → @xiaopao688 → client.send_message: The user has been deleted/deactivated (caused by ResolveUsernameRequest)
+2022-10-24 23:23:05线程：1 → 919676202322.json → @xiaomi1388 → client.send_message: The key is not registered in the system (caused by ResolveUsernameRequest)
+2022-10-24 23:23:56线程：1 → 919675485962.json → @xiaomi1388 → client.send_message: The key is not registered in the system (caused by ResolveUsernameRequest)
+2022-10-24 23:39:37线程：1 → 919676202322.json → @xiaomi1388 → client.send_message: The key is not registered in the system (caused by ResolveUsernameRequest)
+2022-10-24 23:41:00线程：1 → 919675485962.json → @xiaomi1388 → client.send_message: The key is not registered in the system (caused by ResolveUsernameRequest)
+2022-10-24 23:45:38线程：1 → 919671159698 → @xiaokan123456 → client.send_message: Nobody is using this username, or the username is unacceptable. If the latter, it must match r"[a-zA-Z][\w\d]{3,30}[a-zA-Z\d]" (caused by ResolveUsernameRequest)
+2022-10-24 23:48:26线程：1 → 919671159698 → @xiaoLong99 → client.send_message: Nobody is using this username, or the username is unacceptable. If the latter, it must match r"[a-zA-Z][\w\d]{3,30}[a-zA-Z\d]" (caused by ResolveUsernameRequest)

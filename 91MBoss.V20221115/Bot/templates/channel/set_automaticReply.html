@@ -1,0 +1,45 @@
+{% extends "common/layout.html" %}
+{% block 'content' %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col" >
+            <div class="top-message">
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col" >
+            <div class="top-message">
+                <form class="row g-3" action="{% url 'boss_set_automaticReply' %}" method="post">
+
+                    <div class="g-3 row">
+                        <div class="input-group">
+                            <span class="input-group-text">自动回复内容</span>
+                            <textarea required class="form-control" aria-label="With textarea" name="automaticReply" id="channel" style="height:300px;">{{ view_data.channel_send_config.automaticReply }}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-3">保存</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+        <div style="height:50px;"></div>
+    </div>
+
+
+
+<script>
+
+
+</script>
+
+
+{% endblock 'content' %}

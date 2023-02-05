@@ -1,0 +1,404 @@
+{% extends "common/layout.html" %}
+{% block 'content' %}
+
+
+
+<style>
+    .top-message{
+        padding: 23px;
+        border: 1px solid #dedede;
+        margin: 20px;
+        border-radius:8px;
+    }
+
+    .td_title{
+        width:200px;
+        text-align:right
+    }
+
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col" >
+            <div class="top-message">
+<!--                <p>系统不可以同时加群、群发、私信、私信轰炸、单独自动回复</p>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div style="padding-bottom: 30px;height:700px;overflow:auto;">
+<!--            <table class="table table-hover .table-responsive .table-bordered">-->
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col" class="td_title">群发状态</th>
+                        <th scope="col">
+                            {% if context.channel_send_config.StartGroupSendTask == '2' %}
+                                <span class="badge bg-danger">关闭<span/>
+                            {% endif %}
+
+                            {% if context.channel_send_config.StartGroupSendTask == '1' %}
+                                <span class="badge bg-success">开启</span>
+                            {% endif %}
+                        </th>
+                        <th>
+                            {% if context.channel_send_config.StartGroupSendTask == '2' %}
+                                <a href="{% url 'channel_setSwitch' %}?StartGroupSendTask=1" class="link-dark rounded">
+                                    <button type="button" class="btn btn-sm bg-success">点击开启</button>
+                                </a>
+                            {% endif %}
+
+                            {% if context.channel_send_config.StartGroupSendTask == '1' %}
+                                <a href="{% url 'channel_setSwitch' %}?StartGroupSendTask=2" class="link-dark rounded">
+                                    <button type="button" class="btn btn-danger btn-sm">点击关闭</button>
+                                </a>
+                            {% endif %}
+                        </th>
+                    </tr>
+
+                </thead>
+
+            <tbody>
+
+
+
+                <tr>
+                    <td scope="col" class="td_title">群发间隔时间</td>
+                    <td scope="col">【<span style="color:red;">{{ context.channel_send_config.sleep_time }}</span>】秒</td>
+                    <td>
+                        <a href="{% url 'set_channel_sleep_time' %}" class="link-dark rounded">
+                            <button type="button" class="btn btn-success btn-sm">点击设置、编辑</button>
+                        </a>
+                    </td>
+                </tr>
+
+
+
+
+
+                 <tr>
+                    <td scope="col" class="td_title">自动回复内容</td>
+                     <td><div style="max-width:500px;"> {{ context.channel_send_config.automaticReply }} </div></td><td>
+                        <a href="{% url 'boss_set_automaticReply' %}" class="link-dark rounded">
+                            <button type="button" class="btn btn-success btn-sm">点击设置、编辑</button>
+                        </a>
+                    </td>
+                </tr>
+
+
+
+                 <tr>
+                    <td scope="col" class="td_title">群发广告词</td>
+                    <td scope="col">【<span style="color:red;">{{ context.Message_list_count }}</span>】条</td>
+                    <td>
+                        <a href="{% url 'channel_sendContent' %}" class="link-dark rounded">
+                            <button type="button" class="btn btn-primary btn-sm">点击查看、添加、编辑、删除</button>
+                        </a>
+                    </td>
+                </tr>
+
+
+
+                 <tr>
+                    <td scope="col"  class="td_title">是否启用伪内容</td>
+                    <td scope="col" align="left">
+                        {% if context.channel_send_config.is_fake_content == '2' %}
+                            <span class="badge bg-danger">关闭<span/>
+                        {% endif %}
+
+                        {% if context.channel_send_config.is_fake_content == '1' %}
+                            <span class="badge bg-success">开启</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if context.channel_send_config.is_fake_content == '2' %}
+                            <a href="{% url 'channel_setis_fake_content' %}?is_fake_content=1" class="link-dark rounded">
+                                <button type="button" class="btn btn-sm bg-success">点击开启</button>
+                            </a>
+                        {% endif %}
+
+                        {% if context.channel_send_config.is_fake_content == '1' %}
+                            <a href="{% url 'channel_setis_fake_content' %}?is_fake_content=2" class="link-dark rounded">
+                                <button type="button" class="btn btn-danger btn-sm">点击关闭</button>
+                            </a>
+                        {% endif %}
+                    </td>
+                </tr>
+
+
+
+                 <tr>
+                    <td scope="col" class="td_title">伪内容生效时间</td>
+                     <td><div style="max-width:500px;"> 【<span style="color:red;">{{ context.channel_send_config.fake_content_sleep_time }}</span>】秒 </div></td><td>
+                        <a href="{% url 'set_fake_content_sleep_time' %}" class="link-dark rounded">
+                            <button type="button" class="btn btn-success btn-sm">点击设置、编辑</button>
+                        </a>
+                     </td>
+                 </tr>
+
+
+
+
+
+                 <tr>
+                    <td scope="col" class="td_title">自动退禁言群</td>
+                    <td scope="col">【<span style="color:red;">{{ context.channel_send_config.quit_period }}</span>】</td>
+                    <td>
+                        <a href="{% url 'set_quit_period' %}" class="link-dark rounded">
+                            <button type="button" class="btn btn-primary btn-sm">点击设置、编辑</button>
+                        </a>
+                    </td>
+                 </tr>
+
+
+
+
+
+
+
+                <tr>
+                    <td scope="col" class="td_title">自动申请解封禁言</td>
+                    <td scope="col">【<span style="color:red;">
+
+
+                            {% if context.channel_send_config.is_Automation_unmute_cahnnel == '2' %}
+                                已关闭
+                            {% endif %}
+                            {% if context.channel_send_config.is_Automation_unmute_cahnnel == '1' %}
+                                已开启
+                            {% endif %}
+                        </span>】</td>
+                    <td>
+         
+                        {% if context.channel_send_config.is_Automation_unmute_cahnnel == '2' %}
+                            <a href="{% url 'set_Automation_unmute_cahnnel' %}?is_Automation_unmute_cahnnel=1" class="link-dark rounded">
+                                <button type="button" class="btn btn-sm bg-success">点击开启</button>
+                            </a>
+                        {% endif %}
+
+                        {% if context.channel_send_config.is_Automation_unmute_cahnnel == '1' %}
+                            <a href="{% url 'set_Automation_unmute_cahnnel' %}?is_Automation_unmute_cahnnel=2" class="link-dark rounded">
+                                <button type="button" class="btn btn-danger btn-sm">点击关闭</button>
+                            </a>
+                        {% endif %}
+
+
+
+                    </td>
+                </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                 <tr>
+                    <td scope="col"  colspan="3" >
+                        
+
+                        <div style="height:60px;"></div>
+
+
+
+                    </td>
+                    
+                </tr>
+
+
+
+
+
+                 <tr>
+                    <td scope="col"  class="td_title">加群开关</td>
+                    <td scope="col" align="left">
+                        {% if context.channel_join.StartGroupJoinTask == '2' %}
+                            <span class="badge bg-danger">关闭<span/>
+                        {% endif %}
+
+                        {% if context.channel_join.StartGroupJoinTask == '1' %}
+                            <span class="badge bg-success">开启</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if context.channel_join.StartGroupJoinTask == '2' %}
+                            <a href="{% url 'setStartGroupJoinTask' %}?StartGroupJoinTask=1" class="link-dark rounded">
+                                <button type="button" class="btn btn-sm bg-success">点击开启</button>
+                            </a>
+                        {% endif %}
+
+                        {% if context.channel_join.StartGroupJoinTask == '1' %}
+                            <a href="{% url 'setStartGroupJoinTask' %}?StartGroupJoinTask=2" class="link-dark rounded">
+                                <button type="button" class="btn btn-danger btn-sm">点击关闭</button>
+                            </a>
+                        {% endif %}
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td scope="col" class="td_title">加群间隔时间</td>
+                    <td scope="col">【<span style="color:red;">{{ context.channel_join.sleep_time }}</span>】秒</td>
+                    <td>
+                        <a href="{% url 'set_joinchannel_sleep_time' %}" class="link-dark rounded">
+                            <button type="button" class="btn btn-success btn-sm">点击设置、编辑</button>
+                        </a>
+                    </td>
+                </tr>
+
+
+
+
+
+                 <tr>
+                    <td scope="col"  class="td_title">公开群链接</td>
+                    <td scope="col" align="left">【<span style="color:red;">{{ context.public_channel_all_count }}</span>】条</td>
+                    <td>
+                        <a href="{% url 'channel_save' %}" class="link-dark rounded">
+                            <button type="submit" class="btn btn-primary btn-sm">点击查看、添加、编辑、删除</button>
+                        </a>
+                    </td>
+                </tr>
+
+                 <tr>
+                    <td scope="col" class="td_title">私人群链接</td>
+                    <td scope="col">【<span style="color:red;">{{ context.private_channel_all_count }}</span>】条</td>
+                    <td>
+                        <a href="{% url 'private_channel_save' %}" class="link-dark rounded">
+                            <button type="button" class="btn btn-success btn-sm">点击查看、添加、编辑、删除</button>
+                        </a>
+                    </td>
+                </tr>
+
+
+
+
+
+
+                <tr>
+                    <td scope="col" class="td_title">加群类型</td>
+                    <td scope="col">
+                        <span style="color:red;">
+                            {% if context.channel_send_config.join_channel_type == '2' %}
+                                私人群
+                            {% endif %}
+                            {% if context.channel_send_config.join_channel_type == '1' %}
+                                公开群
+                            {% endif %}
+                        </span>
+                    </td>
+                    <td>
+                        <a href="{% url 'set_channel_send_status' %}?join_channel_type=1&field=join_channel_type" class="link-dark rounded">
+                            <button type="button" class="btn btn-primary btn-sm">设置为加公开群</button>
+                        </a>
+                        <a href="{% url 'set_channel_send_status' %}?join_channel_type=2&field=join_channel_type" class="link-dark rounded">
+                            <button type="button" class="btn btn-primary btn-sm">设置为加私人群</button>
+                        </a>
+
+                    </td>
+                </tr>
+
+
+                 <tr>
+                    <td scope="col" class="td_title">设置加群个数(最少)</td>
+                    <td scope="col">【<span style="color:red;">{{ context.channel_send_config.join_channel_count }}</span>】个</td>
+                    <td>
+                        <a href="{% url 'join_channel_count' %}" class="link-dark rounded">
+                            <button type="button" class="btn btn-primary btn-sm">点击设置、编辑</button>
+                        </a>
+                    </td>
+                 </tr>
+
+                 <tr>
+                    <td scope="col" class="td_title">设置加群个数(最多)</td>
+                    <td scope="col">【<span style="color:red;">{{ context.channel_send_config.join_channel_max }}</span>】个</td>
+                    <td>
+                        <a href="{% url 'join_channel_countmax' %}" class="link-dark rounded">
+                            <button type="button" class="btn btn-primary btn-sm">点击设置、编辑</button>
+                        </a>
+                    </td>
+                 </tr>
+
+
+
+
+
+<!--                 <tr>-->
+<!--                    <td scope="col" class="td_title">消息随机字符</td>-->
+<!--                    <td scope="col">【<span style="color:red;">开启</span>】</td>-->
+<!--                    <td>-->
+<!--                        <button type="submit" class="btn btn-primary btn-sm">点击设置、编辑</button>-->
+<!--                    </td>-->
+<!--                </tr>-->
+
+
+
+<!--                 <tr>-->
+<!--                    <td scope="col" class="td_title">进程数</td>-->
+<!--                    <td scope="col">【<span style="color:red;">1</span>】</td>-->
+<!--                    <td>-->
+<!--                        <button type="submit" class="btn btn-success btn-sm">点击设置、编辑</button>-->
+<!--                    </td>-->
+<!--                </tr>-->
+
+
+
+
+
+
+
+
+
+            </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col" >
+            <div class="top-message">
+
+
+            </div>
+        </div>
+    </div>
+
+    <div style="height:50px;"></div>
+</div>
+
+<script>
+
+    $(function(){
+        Bs91m.get_telegram_message = function(t){
+            var url = $(t).attr("url");
+            var win = window.open(url, "获取验证码", "height=300, width=600");
+
+
+            setTimeout(function(){ win.document.title= $(t).attr("phone")+"获取验证码"; }, 1500);
+        }
+
+    })
+
+
+</script>
+
+
+
+
+{% endblock 'content' %}

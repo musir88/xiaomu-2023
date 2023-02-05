@@ -1,0 +1,2 @@
+
+{'phone': '+639810523765', 'channel': 'https://t.me/+s65V6Azf3GI0OTdl', 'submit': 'join_channel', 'path': '91MBoss-session/session/', 'str_channel': 's65V6Azf3GI0OTdl', 'code': 'JoinChannelRequest', 'status': False, 'messageEnglish': 'The chat the user tried to join has expired and is not valid anymore (caused by ImportChatInviteRequest)', 'message': 'https://t.me/+s65V6Azf3GI0OTdl 用户尝试加入的聊天已过期且不再有效（由 ImportChatInviteRequest 引起）', 'messageChinese': '用户尝试加入的聊天已过期且不再有效（由 ImportChatInviteRequest 引起）'}

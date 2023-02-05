@@ -1,0 +1,35 @@
+{% extends "common/layout.html" %}
+{% block 'content' %}
+
+
+<style>
+    .top-message{
+        padding: 23px;
+        border: 1px solid #dedede;
+        margin: 20px;
+        border-radius:8px;
+    }
+
+</style>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col" style="width:100%;" >
+            <div class="top-message">
+                {% for i in data.message_sendCount %}
+                    <span>{{ i }}</span><br>
+                {% endfor %}
+            </div>
+            <div style="height:100px;"></div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+{% endblock 'content' %}
+
+

@@ -1,0 +1,16 @@
+{
+    "client_number": "",
+    "sleep_time": "33,68",
+    "is_fake_content": "1",
+    "fake_content_sleep_time": "5",
+    "StartGroupSendTask": "2",
+    "automaticReply": "你好，联系主号   @Boss91M1",
+    "quit_period": "19,20,21,22,23,24,1,2,3",
+    "randomStringSwitch": "1",
+    "join_channel_count": "30",
+    "process_num": 1,
+    "Banned_and_cahnnel": 1,
+    "join_channel_type": "1",
+    "join_channel_max": "38",
+    "is_Automation_unmute_cahnnel": "2"
+}

@@ -1,0 +1,152 @@
+{% extends "common/layout.html" %}
+{% block 'content' %}
+
+<style>
+    #console-log{
+        max-height:500px;
+        overflow:auto;
+
+    }
+
+    #console-log::-webkit-scrollbar-track {
+        background-color: #dee2e6;
+    }
+
+    #console-log::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    #console-log::-webkit-scrollbar-thumb {
+        background-color: #adb5bd;
+        border-radius: 15%;
+    }
+
+    .input-group-text{
+        width:160px;
+    }
+
+    .top-message{
+        padding: 13px;
+        border: 1px solid #dedede;
+        margin: 10px;
+        border-radius:8px;
+    }
+
+</style>
+
+
+
+<!--     'CHANNEL':'https://t.me/sichouzhilu0',
+    'TIME_FILTER_DAYS':1,
+    'IS_SPECIFY_GROUP':1,
+    'IS_FILTER_PHOTO':1,
+
+    'ID_FILTER_LEN':5,
+ -->
+<div class="container-fluid">
+
+    <div class="container p-5 my-5 border" >
+
+
+    <div class="row">
+        <div class="col" >
+            <div class="top-message">
+                <p>1. 采集功能：打开软件目录- 91MBoss-session/session/(放入采集的账号可放多个)<p>
+
+                <p>2. 采集结果：打开软件目录- 91MBoss/采集结果/群链接/ (采集完成后即可找到群链接)<p>
+
+                <p>3. 运行模式：采集过程中不要操作页面其他功能，软件运行中无法停止，除非关闭软件.<p>
+
+                <p>4. 目前仅支持单个关键词采集</p>
+            </div>
+        </div>
+    </div>
+
+
+    <form class="row g-3" action="{% url 'collection_channelUrl' %}" method="post">
+
+
+
+
+        <div class="g-3 row">
+            <div class="input-group">
+                <span class="input-group-text">关键词</span>
+                <textarea required class="form-control" aria-label="With textarea" name="Key_words" id="channel" value="" style="height:200px;">{{ context.Key_words.Key_words }}</textarea>
+            </div>
+        </div>
+
+
+        <div class="col-auto">
+
+            {% if context.Key_words.status == False %}
+                <button type="submit" class="btn btn-primary mb-3" id="submit">开始</button>
+            {% endif %}
+            {% if context.Key_words.status == True %}
+                <button type="button" class="btn btn-primary mb-3">正在采集...</button>
+            {% endif %}
+
+
+        </div>
+
+
+
+
+    </form>
+
+
+    </div>
+
+    <div class="container p-5 my-5 border" id="console-log"></div>
+
+
+    <div style="bottom:150px;">
+
+               <table class="table table-hover .table-responsive">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <input type="checkbox" class="form-check-input" id="checkedAll"> &nbsp;&nbsp;&nbsp; 采集结果({{ context.collection_count }})个</th>
+                            <th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in context.collection %}
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="form-check-input" name="session_string" value="{{ i.session_string }}"> &nbsp;&nbsp;&nbsp;
+                                {{ i.session_string }}
+                                <a href="javascript:;" title="{{ i.session_data.channel_count_time_string }}">
+                                    <span class="badge bg-info" >
+                                        {{ i.name }}
+                                    </span>
+                                </a>
+                            </td>
+
+                            <td>
+
+                                <a href="{% url 'openCollectionChannePath' %}?path={{ i.name }}" >
+<!--                                    <button type="button" class="btn btn-danger btn-sm"></button>-->
+                                    在文件夹中打开
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+
+    </div>
+
+</div>
+<div style="height:150px;"></div>
+
+<script>
+
+
+
+
+</script>
+
+
+{% endblock 'content' %}
+

@@ -1,0 +1,39 @@
+{% extends "common/layout.html" %}
+{% block 'content' %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col" >
+            <div class="top-message">
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col" >
+            <div class="top-message">
+                <form class="row g-3" action="{% url 'join_channel_count' %}" method="post">
+
+                    <div class="g-3 row">
+                        <div class="input-group">
+                            <span class="input-group-text">个数</span>
+                            <input type="text" class="form-control" value="{{ view_data.channel_send_config.join_channel_count }}" name="join_channel_count">
+                        </div>
+                    </div>
+
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-3">保存</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+        <div style="height:50px;"></div>
+    </div>
+
+
+
+{% endblock 'content' %}

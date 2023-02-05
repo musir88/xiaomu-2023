@@ -1,0 +1,162 @@
+{% extends "common/layout.html" %}
+{% block 'content' %}
+
+
+<style>
+    .top-message{
+        padding: 23px;
+        border: 1px solid #dedede;
+        margin: 20px;
+        border-radius:8px;
+    }
+
+</style>
+
+<!--<div class="container">-->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12" >
+            <div class="top-message">
+                <a href="javascript:;" id="see_channelmessage_sendCount">群发统计</a> 、
+                <a href="javascript:;" id="joinchannel_Count">加群统计</a> 、
+                <a href="javascript:;" id="PrivateChat_Count">私信统计</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div style="padding-bottom: 230px;" class="col-sm-12">
+            <form class="row g-3" action="" method="post">
+                <table class="table table-hover table-responsive ">
+                    <thead>
+                        <tr>
+                            <th>
+                                <input type="checkbox" class="form-check-input" id="checkedAll"> &nbsp;&nbsp;&nbsp; 群发账号（{{ context.session_number_count }}）个 <a href="{% url 'openSessionPath' %}" class="btn btn-success btn-xs">添加 | 查看账号</a></th>
+                            <th colspan="5">
+                               <p>
+                                    <button type="submit" name="status" value="1" class="btn btn-success btn-xs" onclick="javascript:form.action='{% url "updateNumberStatus" %}';">空闲</button>
+                                    <button type="submit" name="status" value="4" class="btn btn-primary btn-xs" onclick="javascript:form.action='{% url "updateNumberStatus" %}';" >加群</button>
+                                    <button type="submit" name="status" value="5" class="btn btn-primary btn-xs" onclick="javascript:form.action='{% url "updateNumberStatus" %}';" >群发</button>
+                                    <button type="submit" name="status" value="6" class="btn btn-primary btn-xs" onclick="javascript:form.action='{% url "updateNumberStatus" %}';" >私信</button>
+                                    <!-- <button type="submit" name="status" value="2" class="btn btn-primary btn-xs" onclick="javascript:form.action='{% url "updateNumberStatus" %}';" >开始加群、群发</button> -->
+                                    <button type="submit" name="status" value="2" class="btn btn-primary btn-xs" onclick="javascript:form.action='{% url "AutomationTemplateSet" %}';" >设置模板</button>
+                                </p>
+
+
+
+                            </th>
+                        </tr>
+                        <tr>
+                            <th colspan="6" style="width: 100%;">
+
+                            
+
+
+                                <p>
+                                    <button type="submit" name="status" value="2" class="btn btn-primary btn-xs" onclick="javascript:form.action='{% url "LeaveRubbishChannel" %}';" >退出垃圾群</button>
+                                    <button type="submit" name="status" value="2" class="btn btn-primary btn-xs" onclick="javascript:form.action='{% url "LeaveallChannelSet" %}';" >退出所有群</button>
+                                    <button type="submit" name="status" value="2" class="btn btn-primary btn-xs" onclick="javascript:form.action='{% url "LeavePublicChannelSet" %}';" >退出公开群</button>
+                                    <button type="submit" name="status" value="2" class="btn btn-primary btn-xs" onclick="javascript:form.action='{% url "LeavePrivateChannelSet" %}';" >退出私人群</button>
+                                    <button type="submit" name="status" value="2" class="btn btn-primary btn-xs" onclick="javascript:form.action='{% url "sessionJoinChannelCount" %}';" >统计加群数量</button>
+                                    <button type="submit" name="status" value="2" class="btn btn-primary btn-xs" onclick="javascript:form.action='{% url "ApplyForUnblocking" %}';" >申请解封禁言</button>
+                                </p>
+
+
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in context.session_number %}
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="form-check-input" name="session_string" value="{{ i.session_string }}"> &nbsp;&nbsp;&nbsp;
+                                {{ i.session_string }}
+                                <a href="javascript:;" title="{{ i.session_data.channel_count_time_string }}">
+<!--                                <a href="{% url 'boss_channel_count' %}?sublime_token=save_result&session={{ i.session_string }}" title="{{ i.session_data.channel_count_time_string }}">-->
+                                    <span class="badge bg-info" >
+                                        {{ i.session_data.channel_count }}
+                                    </span>
+                                </a>
+                            </td>
+                            <td>{{ i.status }}</td>
+                            <td><pre>{{ i.session_data.desc }}</pre></td>
+                            <td>
+<pre>{{ i.Template.first_name }}
+{{ i.Template.last_name }}</pre>
+
+
+                            </td>
+                            <td>
+                                <a url="{% url 'get_telegram_message' %}?phone={{ i.session_string }}" href=javascript:; onclick="Bs91m.get_telegram_message(this)" phone="{{ i.session_string }}">
+                                    <button type="button" class="btn btn-danger btn-sm">获取验证码</button>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </form>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col" >
+            <div class="top-message">
+
+            </div>
+        </div>
+    </div>
+    <div style="height:50px;"></div>
+</div>
+
+<script>
+
+    $(function(){
+        Bs91m.get_telegram_message = function(t){
+            var url = $(t).attr("url");
+            var win = window.open(url, "获取验证码", "height=300, width=600");
+
+
+            setTimeout(function(){ win.document.title= $(t).attr("phone")+"获取验证码"; }, 1500);
+        }
+
+
+         //全选与反选
+         $('#checkedAll').click(function(){
+            let sta = $('#checkedAll').prop('checked');
+            $("input:not('#checkedAll')").prop('checked',sta)
+          })
+
+
+         $("#see_channelmessage_sendCount").click(function(){
+            var url = "{% url 'channelmessage_sendCount' %}";
+            var win = window.open(url, "消息发送统计", "height=800px, width=600");
+
+         });
+
+
+         $("#joinchannel_Count").click(function(){
+            var url = "{% url 'joinchannel_Count' %}";
+            var win = window.open(url, "加群统计", "height=800px, width=600");
+
+         });
+
+
+
+         $("#PrivateChat_Count").click(function(){
+            var url = "{% url 'PrivateChat_Count' %}";
+            var win = window.open(url, "私信统计", "height=800px, width=600");
+
+         });
+
+
+
+    })
+
+
+</script>
+
+
+
+
+{% endblock 'content' %}
